@@ -4,10 +4,10 @@ export interface Token {
 }
 
 export enum TokenTypes {
-  paren,
-  name,
-  number,
-  string,
+  Paren,
+  Name,
+  Number,
+  String,
 }
 
 export function tokenizer(code: string) {
@@ -24,7 +24,7 @@ export function tokenizer(code: string) {
 
     if (char === '(') {
       tokens.push({
-        type: TokenTypes.paren,
+        type: TokenTypes.Paren,
         value: char,
       })
       current++
@@ -33,7 +33,7 @@ export function tokenizer(code: string) {
 
     if (char === ')') {
       tokens.push({
-        type: TokenTypes.paren,
+        type: TokenTypes.Paren,
         value: char,
       })
       current++
@@ -48,7 +48,7 @@ export function tokenizer(code: string) {
         value += char
         char = code[++current]
       }
-      tokens.push({ type: TokenTypes.name, value })
+      tokens.push({ type: TokenTypes.Name, value })
     }
 
     // number
@@ -61,7 +61,7 @@ export function tokenizer(code: string) {
       }
 
       tokens.push({
-        type: TokenTypes.number,
+        type: TokenTypes.Number,
         value: value,
       })
     }

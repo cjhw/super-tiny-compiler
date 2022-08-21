@@ -3,15 +3,15 @@ import { tokenizer, TokenTypes } from './tokenizer'
 
 test('tokenizer', () => {
   const tokens = [
-    { type: TokenTypes.paren, value: '(' },
-    { type: TokenTypes.name, value: 'add' },
-    { type: TokenTypes.number, value: '2' },
-    { type: TokenTypes.paren, value: '(' },
-    { type: TokenTypes.name, value: 'subtract' },
-    { type: TokenTypes.number, value: '4' },
-    { type: TokenTypes.number, value: '2' },
-    { type: TokenTypes.paren, value: ')' },
-    { type: TokenTypes.paren, value: ')' },
+    { type: TokenTypes.Paren, value: '(' },
+    { type: TokenTypes.Name, value: 'add' },
+    { type: TokenTypes.Number, value: '2' },
+    { type: TokenTypes.Paren, value: '(' },
+    { type: TokenTypes.Name, value: 'subtract' },
+    { type: TokenTypes.Number, value: '4' },
+    { type: TokenTypes.Number, value: '2' },
+    { type: TokenTypes.Paren, value: ')' },
+    { type: TokenTypes.Paren, value: ')' },
   ]
 
   const code = '(add 2 (subtract 4 2))'
@@ -21,7 +21,7 @@ test('tokenizer', () => {
 test('paren', () => {
   const tokens = [
     {
-      type: TokenTypes.paren,
+      type: TokenTypes.Paren,
       value: '(',
     },
   ]
@@ -32,7 +32,7 @@ test('paren', () => {
 test('name', () => {
   const tokens = [
     {
-      type: TokenTypes.name,
+      type: TokenTypes.Name,
       value: 'add',
     },
   ]
@@ -43,7 +43,7 @@ test('name', () => {
 test('number', () => {
   const tokens = [
     {
-      type: TokenTypes.number,
+      type: TokenTypes.Number,
       value: '22',
     },
   ]
