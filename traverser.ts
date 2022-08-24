@@ -1,12 +1,12 @@
-import { ChildNode, NodeTypes, RootNode } from './ast'
+import { CallExpressionNode, ChildNode, NodeTypes, RootNode } from './ast'
 
-type ParentNode = RootNode | ChildNode | undefined
+type ParentNode = RootNode | CallExpressionNode | undefined
 
 type MethodFn = (node: RootNode | ChildNode, parent: ParentNode) => void
 
 interface VisitorOption {
   enter: MethodFn
-  exit: MethodFn
+  exit?: MethodFn
 }
 export interface Visitor {
   Program?: VisitorOption
@@ -15,7 +15,7 @@ export interface Visitor {
   StringLiteral?: VisitorOption
 }
 
-export function traverse(root: RootNode, visitor: Visitor) {
+export function traverser(root: RootNode, visitor: Visitor) {
   // 1.深度优先搜索
   // 2.visitor
 
@@ -44,7 +44,7 @@ export function traverse(root: RootNode, visitor: Visitor) {
     }
 
     // exit
-    if (methods) {
+    if (methods && methods.exit) {
       methods.exit(node, parent)
     }
   }

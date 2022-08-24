@@ -28,11 +28,13 @@ export interface CallExpressionNode extends Node {
   name: string
   params: ChildNode[]
   type: NodeTypes.CallExpression
+  context?: ChildNode[]
 }
 
 export interface RootNode extends Node {
   body: ChildNode[]
   type: NodeTypes.Program
+  context?: ChildNode[]
 }
 
 export function createStringLiteralNode(value): StringLiteralNode {
